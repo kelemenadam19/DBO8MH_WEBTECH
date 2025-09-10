@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Parancsok</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Legfontosabb Git parancsok</h1>
+
+    <div class="container">
+        <h2>Alapvető parancsok</h2>
+        <ul>
+            <li><code>git init</code> - Új Git repository létrehozása</li>
+            <li><code>git clone [url]</code> - Repository másolása</li>
+            <li><code>git status</code> - Munkakönyvtár állapotának megjelenítése</li>
+            <li><code>git add [fájl]</code> - Fájl hozzáadása a staging area-hoz</li>
+            <li><code>git commit -m "üzenet"</code> - Változtatások véglegesítése</li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h2>Branchek kezelése</h2>
+        <ul>
+            <li><code>git branch</code> - Ágak listázása</li>
+            <li><code>git branch [ág-neve]</code> - Új ág létrehozása</li>
+            <li><code>git checkout [ág-neve]</code> - Ág váltása</li>
+            <li><code>git merge [ág-neve]</code> - Ág egyesítése</li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h2>Remote repository kezelése</h2>
+        <ul>
+            <li><code>git remote add [név] [url]</code> - Távoli repository hozzáadása</li>
+            <li><code>git push [távoli] [ág]</code> - Változtatások feltöltése</li>
+            <li><code>git pull [távoli] [ág]</code> - Változtatások letöltése</li>
+            <li><code>git fetch [távoli]</code> - Távoli változtatások letöltése</li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h2>Változtatások nyomon követése</h2>
+        <ul>
+            <li><code>git log</code> - Commit history megjelenítése</li>
+            <li><code>git diff</code> - Módosítások megjelenítése</li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h2>Visszavonási parancsok</h2>
+        <ul>
+            <li><code>git checkout -- [fájl]</code> - Módosítások elvetése</li>
+            <li><code>git revert [commit]</code> - Commit visszavonása</li>
+        </ul>
+    </div>
+</body>
+
+</html>
