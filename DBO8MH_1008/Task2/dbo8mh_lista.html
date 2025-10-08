@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listák Bemutatása</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #333;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Listák Bemutatása</h1>
+
+
+    <section>
+        <h2>a. Rendezetlen lista</h2>
+        <ul>
+            <li>piros</li>
+            <li>kék</li>
+            <li>sárga</li>
+            <li>barna</li>
+        </ul>
+        <ul>
+            <li>sárga</li>
+            <li>fehér</li>
+            <li>zöld</li>
+            <li>kék</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>b. Rendezett lista</h2>
+        <ol>
+            <li>pink</li>
+            <li>kék</li>
+            <li>sárga</li>
+            <li>barna</li>
+        </ol>
+    </section>
+
+
+    <section>
+        <h2>c. Nagybetűk</h2>
+        <ol type="A">
+            <li>pink</li>
+            <li>kék</li>
+            <li>sárga</li>
+            <li>barna</li>
+        </ol>
+    </section>
+
+
+    <section>
+        <h2>d. Római számok</h2>
+        <ol type="I">
+            <li>I. ÉVF</li>
+            <li>II. ÉVF</li>
+            <li>III. ÉVF</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>e. Inline style</h2>
+        <ol style="list-style-type: upper-alpha;">
+            <li>Sárga</li>
+            <li>Kék</li>
+            <li>Zöld</li>
+            <li>Pink</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>f. HTML Description Lists</h2>
+        <dl>
+            <dt>Farkas</dt>
+            <dd>Kutyaszerű ragadozó emlős</dd>
+
+            <dt>Fájl</dt>
+            <dd>Szöveges állomány</dd>
+
+            <dt>Oroszlán</dt>
+            <dd>Macskaszerű ragadozó emlős</dd>
+            <dd>Az állatok királya</dd>
+        </dl>
+    </section>
+
+    <section>
+        <h2>g. Embedded HTML lists</h2>
+        <p>Kedvenc reggeli italaim</p>
+        <ul>
+            <li>Kávé</li>
+            <li>Tea
+                <ul>
+                    <li>Fekete</li>
+                    <li>Zöld</li>
+                </ul>
+            </li>
+            <li>Tej</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>h. Control List Counting</h2>
+        <ol start="5">
+            <li>KL</li>
+            <li>EL</li>
+            <li>BL</li>
+        </ol>
+    </section>
+
+</body>
+
+</html>
