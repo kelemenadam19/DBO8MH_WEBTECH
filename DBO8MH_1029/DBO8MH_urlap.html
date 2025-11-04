@@ -1,180 +1,130 @@
-<!DOCTYPE html>
-<html lang="hu">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adatfeldolgozó Űrlap</title>
-    <style>
-        html,
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #f0f0f0;
-            min-height: 100vh;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 50rem;
-            margin-top: 2rem;
-        }
-
-        section {
-            width: 50rem;
-            background-color: rgb(149, 132, 144);
-            padding: 1rem;
-            text-align: center;
-            border-radius: 0.5rem;
-            box-shadow: inset 0 0 0.5rem 0 black, 0.25rem 0.25rem 0.5rem 0.25rem black;
-            margin-top: 1rem;
-        }
-
-        header {
-            width: 50rem;
-            padding: 1rem;
-            text-align: center;
-            font-size: 2rem;
-            font-weight: bold;
-        }
-
-        footer {
-            width: 50rem;
-            margin-top: 2rem;
-            border-top: 0.1rem solid black;
-            padding: 1rem;
-            text-align: right;
-            font-size: 0.5rem;
-        }
-
-        .form-container {
-            background-color: rgba(255, 255, 255, 0.7);
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        label {
-            display: block;
-            width: 150px;
-            text-align: left;
-            margin-right: 1rem;
-        }
-
-        input,
-        select {
-            flex: 1;
-            padding: 0.25rem;
-        }
-
-        button {
-            background-color: #4a4a4a;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 0.25rem;
-            cursor: pointer;
-            margin-top: 1rem;
-        }
-
-        .result {
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 1rem;
-            border-radius: 0.5rem;
-            margin-top: 1rem;
-            text-align: left;
-        }
-    </style>
+    <title>Űrlap - Kelemen Ádám</title>
 </head>
+<style>
+    html,
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    section {
+        width: 50rem;
+
+        background-color: rgb(149, 132, 244);
+        padding: 1rem;
+        text-align: center;
+
+        border-radius: 0.5rem;
+        box-shadow: inset 0 0 0.5rem 0 #00000066,
+            0.25rem 0.25rem 0.5rem 0.25rem #000000aa;
+    }
+
+    header {
+        width: 50rem;
+
+        padding: 1rem;
+        text-align: center;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    footer {
+        width: 50rem;
+
+        margin-top: 2rem;
+
+        border-top: 0.1rem solid black;
+
+        padding: 1rem;
+        text-align: right;
+        font-size: 0.8rem;
+    }
+
+    label {
+        display: block;
+        width: 100%;
+        text-align: left;
+        gap: 1rem;
+        margin: 1rem;
+    }
+
+    .sidebyside {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        justify-content: left;
+    }
+
+    .sidebyside input {
+        width: 10rem;
+    }
+</style>
 
 <body>
-    <div class="container">
-        <header>Adatfeldolgozó Űrlap</header>
+    <header>HTML5 Űrlap - Kelemen Ádám</header>
 
-        <section>
-            <div class="form-container">
-                <form method="POST" action="">
-                    <div class="form-group">
-                        <label for="nev">Név:</label>
-                        <input type="text" id="nev" name="nev" required>
-                    </div>
+    <section>
+        <form action="FIWXDX_feldolgozo.php" target="_self" method="post" name="urlap" id="urlap">
+            <label for="nev">Név:
+                <input type="text" name="nev" id="nev" required pattern="
+                ([A-ZÁÉÍÓÖŐÚÜŰ a-záéíóöőúüű]){4,}" title="Írd be a neved" placeholder="Írd be a neved" autofocus
+                    autocomplete="off">
+            </label>
 
-                    <div class="form-group">
-                        <label for="pin">PIN kód:</label>
-                        <input type="text" id="pin" name="pin" required maxlength="4" pattern="[0-9]{4}"
-                            title="4 számjegyből álló PIN kód">
-                    </div>
+            <label for="pin">
+                PIN kód:
+                <input type="password" name="pin" id="pin" required pattern="[0-9]{4}" title="4 számjegyű PIN kód"
+                    placeholder="Írd be a PIN kódot">
+            </label>
 
-                    <div class="form-group">
-                        <label for="fav_fruit">Kedvenc gyümölcs:</label>
-                        <select id="fav_fruit" name="fav_fruit" required>
-                            <option value="">Válassz...</option>
-                            <option value="alma">Alma</option>
-                            <option value="banán">Banán</option>
-                            <option value="narancs">Narancs</option>
-                            <option value="eper">Eper</option>
-                            <option value="szőlő">Szőlő</option>
-                            <option value="dinnye">Dinnye</option>
-                        </select>
-                    </div>
+            <label for="fav_fruit">
+                Kedvenc gyümölcs:
+                <input list="gyumolcsok" id="fav_fruit" name="fav_fruit" placeholder=""
+                    title="Alma, Körte, Szőlő, Banán, Narancs">
+                <datalist id="gyumolcsok">
+                    <option value="alma">Alma</option>
+                    <option value="körte">Körte</option>
+                    <option value="szőlő">Szőlő</option>
+                    <option value="banán">Banán</option>
+                    <option value="narancs">Narancs</option>
+                </datalist>
+            </label>
 
-                    <div class="form-group">
-                        <label for="age">Életkor:</label>
-                        <input type="number" id="age" name="age" min="1" max="120" required>
-                    </div>
+            <label for="age">
+                Életkor:
+                <input type="number" name="age" id="age" min="1" max="100" step="1" title="1 és 100 közötti érték"
+                    placeholder="">
+            </label>
 
-                    <div class="form-group">
-                        <label for="feet_size">Lábméret:</label>
-                        <input type="number" id="feet_size" name="feet_size" min="20" max="50" step="0.5" required>
-                    </div>
+            <label for="feet_size">
+                Lábméret:
+                <input type="number" name="feet_size" id="feet_size" min="25" max="50" step="0.5"
+                    title="25 és 50 közötti érték" placeholder="">
+            </label>
 
-                    <div class="form-group">
-                        <label for="confidence">Önbizalom (1-10):</label>
-                        <input type="range" id="confidence" name="confidence" min="1" max="10" value="5" required>
-                        <span id="confidence-value">5</span>
-                    </div>
+            <label for="confidence">
+                Önbizalom:
+                <input type="range" name="confidence" id="confidence" min="0" max="100" step="0.1"
+                    title="0 és 100 közötti érték">
+            </label>
+        </form>
+        <br>
 
-                    <button type="submit">Küldés</button>
-                </form>
-            </div>
+        <div class="sidebyside">
+            <input type="submit" value="Elküld" form="urlap">
+            <input type="submit" value="Elküld ellenőrzés nélkül" formnovalidate form="urlap">
+        </div>
+    </section>
 
-            <!-- Eredmények megjelenítése -->
-            <div class="result">
-                <?php include 'feldolgozo.php'; ?>
-            </div>
-        </section>
-
-        <footer>
-            Adatfeldolgozó Űrlap
-        </footer>
-    </div>
-
-    <script>
-        // Önbizalom érték megjelenítése
-        const confidenceSlider = document.getElementById('confidence');
-        const confidenceValue = document.getElementById('confidence-value');
-
-        confidenceSlider.addEventListener('input', function () {
-            confidenceValue.textContent = this.value;
-        });
-    </script>
 </body>
 
 </html>
