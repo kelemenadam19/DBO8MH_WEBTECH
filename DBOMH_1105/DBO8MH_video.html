@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 
 <head>
     <meta charset="UTF-8">
@@ -40,7 +40,6 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        /* Gombok stílusa */
         .control-btn {
             background-color: #4CAF50;
             border: none;
@@ -59,6 +58,22 @@
         .control-btn:hover {
             background-color: #45a049;
         }
+
+        .info-text {
+            font-size: 18px;
+            margin: 10px;
+            color: #333;
+        }
+
+        .volume-controls,
+        .speed-controls {
+            margin: 15px 0;
+        }
+
+        .active {
+            background-color: #2E7D32;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -69,27 +84,47 @@
     </header>
     <div class="grid-container">
         <div>
-            <video id="MyVideo" width="320" controls>
+            <video id="MyVideo" width="500" controls>
                 <source src="videos/bunny.mp4" type="video/mp4">
             </video>
         </div>
         <div>
-            <button class="control-btn" onclick="PlayPause()">Play/Pause</button>
+            <button class="control-btn" onclick="PlayPause()">Lejátszás/Szünet</button>
             <button class="control-btn" onclick="makeBig()">Nagyobb</button>
             <button class="control-btn" onclick="makeSmall()">Kisebb</button>
             <button class="control-btn" onclick="forward()">Előre 1s</button>
             <button class="control-btn" onclick="backward()">Vissza 1s</button>
             <button class="control-btn" onclick="fullscreen()">Teljes képernyő</button>
             <button class="control-btn" onclick="pictureInPicture()">Kép-a-képben</button>
+
+            <div class="volume-controls">
+                <button class="control-btn" onclick="mute()">Néma</button>
+                <button class="control-btn" onclick="volumeDown()">Halkabb</button>
+                <button class="control-btn" onclick="volumeUp()">Hangosabb</button>
+            </div>
+
+            <div class="speed-controls">
+                <button class="control-btn" onclick="setSpeed(0.25)">0.25x</button>
+                <button class="control-btn" onclick="setSpeed(0.5)">0.5x</button>
+                <button class="control-btn" onclick="setSpeed(1)" id="normalSpeed">Normál</button>
+                <button class="control-btn" onclick="setSpeed(1.5)">1.5x</button>
+                <button class="control-btn" onclick="setSpeed(2)">2x</button>
+            </div>
+
+            <div>
+                <p class="info-text" id="videoInfo">Videó információk betöltése...</p>
+                <button class="control-btn" onclick="checkFinished()">Befejeződött-e?</button>
+            </div>
         </div>
     </div>
     <footer>
         <p>Óra időpontja: 2025.11.05</p>
         <br>
-        <p>Forrás: <a href="https://peach.blender.org/">https://peach.blender.org/</a></p>
+        <p>Forrás <a href="https://peach.blender.org/">https://peach.blender.org/</a></p>
     </footer>
     <script>
         var v = document.getElementById("MyVideo");
+        var normalSpeedBtn = document.getElementById("normalSpeed");
 
         function PlayPause() {
             if (v.paused) {
@@ -123,9 +158,9 @@
         function fullscreen() {
             if (v.requestFullscreen) {
                 v.requestFullscreen();
-            } else if (v.webkitRequestFullscreen) { /* Safari */
+            } else if (v.webkitRequestFullscreen) {
                 v.webkitRequestFullscreen();
-            } else if (v.msRequestFullscreen) { /* IE11 */
+            } else if (v.msRequestFullscreen) {
                 v.msRequestFullscreen();
             }
         }
@@ -137,6 +172,76 @@
                 v.requestPictureInPicture();
             }
         }
+
+        function mute() {
+            v.muted = !v.muted;
+        }
+
+        function volumeDown() {
+            if (v.volume > 0.1) {
+                v.volume -= 0.1;
+            } else {
+                v.volume = 0;
+            }
+        }
+
+        function volumeUp() {
+            if (v.volume < 0.9) {
+                v.volume += 0.1;
+            } else {
+                v.volume = 1;
+            }
+        }
+
+        function setSpeed(speed) {
+            v.playbackRate = speed;
+
+            var buttons = document.querySelectorAll('.speed-controls .control-btn');
+            buttons.forEach(function (btn) {
+                btn.classList.remove('active');
+            });
+
+            buttons.forEach(function (btn) {
+                if (btn.textContent === speed + 'x' ||
+                    (speed === 1 && btn.textContent === 'Normál')) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        function checkFinished() {
+            var info = document.getElementById("videoInfo");
+
+            if (v.ended) {
+                info.textContent = "A videó befejeződött.";
+            } else {
+                var currentTime = formatTime(v.currentTime);
+                var duration = formatTime(v.duration);
+                info.textContent = "A videó még fut. Jelenlegi idő: " + currentTime + " / " + duration;
+            }
+        }
+
+        function formatTime(seconds) {
+            var minutes = Math.floor(seconds / 60);
+            var secs = Math.floor(seconds % 60);
+            return minutes + ":" + (secs < 10 ? "0" : "") + secs;
+        }
+
+        v.addEventListener('timeupdate', function () {
+            var info = document.getElementById("videoInfo");
+            if (!v.ended) {
+                var currentTime = formatTime(v.currentTime);
+                var duration = formatTime(v.duration);
+                info.textContent = "Jelenlegi idő: " + currentTime + " / " + duration +
+                    " | Sebesség: " + v.playbackRate + "x";
+            }
+        });
+
+        v.addEventListener('loadedmetadata', function () {
+            var info = document.getElementById("videoInfo");
+            var duration = formatTime(v.duration);
+            info.textContent = "Videó hossza: " + duration + " | Sebesség: " + v.playbackRate + "x";
+        });
     </script>
 </body>
 
