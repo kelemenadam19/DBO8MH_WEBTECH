@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelemen Ádám - Videó</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto;
+            grid-gap: 10px;
+            background-color: lightgreen;
+            padding: 10px;
+            gap: 20px 50px;
+        }
+
+        .grid-container>div {
+            text-align: center;
+            padding: 5px;
+            font-size: 30px;
+        }
+
+        footer {
+            background-color: #777;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        header {
+            background-color: #666;
+            padding: 30px;
+            text-align: center;
+            font-size: 35px;
+            color: white;
+        }
+
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Gombok stílusa */
+        .control-btn {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .control-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Kelemen Ádám - Video</h1>
+    </header>
+    <div class="grid-container">
+        <div>
+            <video id="MyVideo" width="320" controls>
+                <source src="videos/bunny.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div>
+            <button class="control-btn" onclick="PlayPause()">Play/Pause</button>
+            <button class="control-btn" onclick="makeBig()">Nagyobb</button>
+            <button class="control-btn" onclick="makeSmall()">Kisebb</button>
+            <button class="control-btn" onclick="forward()">Előre 1s</button>
+            <button class="control-btn" onclick="backward()">Vissza 1s</button>
+            <button class="control-btn" onclick="fullscreen()">Teljes képernyő</button>
+            <button class="control-btn" onclick="pictureInPicture()">Kép-a-képben</button>
+        </div>
+    </div>
+    <footer>
+        <p>Óra időpontja: 2025.11.05</p>
+        <br>
+        <p>Forrás: <a href="https://peach.blender.org/">https://peach.blender.org/</a></p>
+    </footer>
+    <script>
+        var v = document.getElementById("MyVideo");
+
+        function PlayPause() {
+            if (v.paused) {
+                v.play();
+            }
+            else {
+                v.pause();
+            }
+        }
+
+        function makeBig() {
+            var currentSize = parseInt(v.getAttribute("width"));
+            v.width = currentSize + 100;
+        }
+
+        function makeSmall() {
+            var currentSize = parseInt(v.getAttribute("width"));
+            if (currentSize > 100) {
+                v.width = currentSize - 100;
+            }
+        }
+
+        function forward() {
+            v.currentTime += 1;
+        }
+
+        function backward() {
+            v.currentTime -= 1;
+        }
+
+        function fullscreen() {
+            if (v.requestFullscreen) {
+                v.requestFullscreen();
+            } else if (v.webkitRequestFullscreen) { /* Safari */
+                v.webkitRequestFullscreen();
+            } else if (v.msRequestFullscreen) { /* IE11 */
+                v.msRequestFullscreen();
+            }
+        }
+
+        function pictureInPicture() {
+            if (document.pictureInPictureElement) {
+                document.exitPictureInPicture();
+            } else if (v !== document.pictureInPictureElement) {
+                v.requestPictureInPicture();
+            }
+        }
+    </script>
+</body>
+
+</html>
