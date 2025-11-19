@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Könyvek</title>
+</head>
+
+<body>
+    <h1>JSON megvalósítása – JavaScript</h1>
+
+    <div id="kiir"></div>
+
+    <script>
+        const path = "./DBO8MH_konyv.JSON";
+
+        fetch(path)
+            .then(res => res.json())
+            .then(data => {
+                const konyvek = data.konyvek.konyv;
+                let html = '';
+
+                for (let i = 0; i < konyvek.length; i++) {
+                    const konyv = konyvek[i];
+                    html += `
+                        <div>
+                            <p><strong>Cím:</strong> ${konyv.cim}</p>
+                            <p><strong>Író:</strong> ${konyv.iro}</p>
+                            <p><strong>Kiadás éve:</strong> ${konyv.kiadas}</p>
+                            <hr>
+                        </div>
+                    `;
+                }
+
+                document.getElementById('kiir').innerHTML = html;
+            })
+            .catch(error => {
+                console.error('Hiba történt:', error);
+                document.getElementById('kiir').innerHTML = '<p>Hiba történt az adatok betöltése során.</p>';
+            });
+    </script>
+</body>
+
+</html>

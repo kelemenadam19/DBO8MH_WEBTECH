@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JSON Parser</title>
+</head>
+
+<body>
+    <h2>JSON Parser</h2>
+
+    <textarea id="jsonInput" rows="10" cols="50" placeholder="Írd ide a JSON stringet...">
+[
+    {
+        "id": 1,
+        "brand": "Ford",
+        "name": "Focus",
+        "hp": 125,
+        "weight": 1321,
+        "date": "2022-05-15",
+        "seats": 5,
+        "trunkVolume": 375,
+        "fuel": "Gasoline",
+        "cylinderCapacity": 1596,
+        "transmission": "Manual",
+        "color": "Magnetic Gray",
+        "price": 18500
+    },
+    {
+        "id": 2,
+        "brand": "Mazda",
+        "name": "6",
+        "hp": 194,
+        "weight": 1475,
+        "date": "2021-11-20",
+        "seats": 5,
+        "trunkVolume": 483,
+        "fuel": "Gasoline",
+        "cylinderCapacity": 2488,
+        "transmission": "Automatic",
+        "color": "Soul Red Crystal",
+        "price": 26500
+    }
+]
+    </textarea>
+
+    <br><br>
+    <button onclick="parseJSON()">Beolvas és Konvertál</button>
+
+    <br><br>
+    <h3>Eredmény:</h3>
+    <textarea id="output" rows="15" cols="50" readonly
+        placeholder="Itt jelenik meg a konvertált objektum..."></textarea>
+
+    <script>
+        function parseJSON() {
+            const jsonInput = document.getElementById('jsonInput').value;
+            const output = document.getElementById('output');
+
+            try {
+
+                const parsedObject = JSON.parse(jsonInput);
+
+
+                output.value = formatObject(parsedObject);
+
+            } catch (error) {
+                output.value = 'Hiba: ' + error.message;
+            }
+        }
+
+        function formatObject(obj) {
+            if (Array.isArray(obj)) {
+                let result = 'TÖMB (' + obj.length + ' elem):\n\n';
+                obj.forEach((item, index) => {
+                    result += `[${index}]:\n` + formatSingleObject(item) + '\n';
+                });
+                return result;
+            } else {
+                return formatSingleObject(obj);
+            }
+        }
+
+        function formatSingleObject(obj) {
+            let result = 'OBJEKTUM:\n';
+            for (const [key, value] of Object.entries(obj)) {
+                result += `  ${key}: ${value} (${typeof value})\n`;
+            }
+            return result;
+        }
+    </script>
+</body>
+
+</html>

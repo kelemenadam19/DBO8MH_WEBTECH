@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1>Hallgató neve:</h1>
+        <p id="nev"></p>
+        <h2>Hallgató kora:</h2>
+        <p id="kor"></p>
+        <div id="cars"></div>
+    </div>
+
+
+
+
+
+
+    <script>
+        const render = document.getElementById("cars")
+
+        DBO8MHOBJ = {
+            "name": "Kelemen Ádám",
+            "age": 22,
+            "cars": [
+                { "name": "Toyota", "models": ["CHR", "Corolla", "Proace"] },
+                { "name": "Ford", "models": ["Focus", "Mondeo", "Mustang"] },
+                { "name": "BMW", "models": ["320", "X3", "X5"] },
+                { "name": "Fiat", "models": ["500", "Panda", "Multipla"] }
+            ]
+        }
+        document.getElementById('nev').innerHTML = DBO8MHOBJ.name;
+
+        document.getElementById('kor').innerHTML = DBO8MHOBJ.age + " Éves";
+
+
+
+
+
+        for (let i = 0; i < DBO8MHOBJ.cars.length; i++) {
+            //console.log(DBO8MHOBJ.cars[i].name);
+            render.innerHTML += `<h2>${DBO8MHOBJ.cars[i].name}</h2>`
+            for (let j = 0; j < DBO8MHOBJ.cars[i].models.length; j++) {
+                console.log(DBO8MHOBJ.cars[i].models[j]);
+                render.innerHTML += `<ol>${DBO8MHOBJ.cars[i].models[j]}</ol>`
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>

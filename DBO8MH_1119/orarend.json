@@ -1,0 +1,123 @@
+{
+    "orarend": {
+        "ora": [
+            {
+                "targy": "Webtechnológiák I.",
+                "idopont": {
+                    "nap": "Hétfő",
+                    "kezdes": "10",
+                    "befejezes": "12"
+                },
+                "helyszin": "E5",
+                "oktato": "Dr. Agárdi Anita",
+                "szak": "Üzemmérnöki-informatika",
+                "_id": "1",
+                "_tipus": "eloadas"
+            },
+            {
+                "targy": "Adatbázisrendszerek I.",
+                "idopont": {
+                    "nap": "Kedd",
+                    "kezdes": "8",
+                    "befejezes": "10"
+                },
+                "helyszin": "1E",
+                "oktato": "Dr. Kovács László József",
+                "szak": "Üzemmérnöki-informatika",
+                "_id": "2",
+                "_tipus": "eloadas"
+            },
+            {
+                "targy": "Adatbázisrendszerek I.",
+                "idopont": {
+                    "nap": "Kedd",
+                    "kezdes": "10",
+                    "befejezes": "13"
+                },
+                "helyszin": "In202",
+                "oktato": "Szűcs Miklós",
+                "szak": "Üzemmérnöki-informatika",
+                "_id": "3",
+                "_tipus": "gyakorlat"
+            },
+            {
+                "targy": "Szoftver Technológia",
+                "idopont": {
+                    "nap": "Szerda",
+                    "kezdes": "8",
+                    "befejezes": "10"
+                },
+                "helyszin": "III A4 fsz.",
+                "oktato": "Mileff Péter",
+                "szak": "Üzemmérnöki-informatika",
+                "_id": "4",
+                "_tipus": "eloadas"
+            },
+            {
+                "targy": "Adatbázisrendszerek I.",
+                "idopont": {
+                    "nap": "Szerda",
+                    "kezdes": "10",
+                    "befejezes": "12"
+                },
+                "helyszin": "?",
+                "oktato": "Jlidli Ali",
+                "szak": "Üzemmérnöki-informatika",
+                "_id": "5",
+                "_tipus": "gyakorlat"
+            },
+            {
+                "targy": "Webtechnológiák I.",
+                "idopont": {
+                    "nap": "Szerda",
+                    "kezdes": "12",
+                    "befejezes": "14"
+                },
+                "helyszin": "In102",
+                "oktato": "Dr. Bednarik László",
+                "szak": "Üzemmérnöki-informatika",
+                "_id": "6",
+                "_tipus": "gyakorlat"
+            },
+            {
+                "targy": "Webtechnológiák I. gyakorlat",
+                "idopont": {
+                    "nap": "Szerda",
+                    "kezdes": "14",
+                    "befejezes": "16"
+                },
+                "helyszin": "In101",
+                "oktato": "Dr. Bednarik László",
+                "szak": "Üzemmérnöki-informatika",
+                "_id": "7",
+                "_tipus": "gyakorlat"
+            },
+            {
+                "targy": "Adatbázisrendszerek I.",
+                "idopont": {
+                    "nap": "Szerda",
+                    "kezdes": "16",
+                    "befejezes": "18"
+                },
+                "helyszin": "In102",
+                "oktato": "Mészáros Gergő",
+                "szak": "Üzemmérnöki-informatika",
+                "_id": "8",
+                "_tipus": "gyakorlat"
+            },
+            {
+                "targy": "Számíógép architertúrák",
+                "idopont": {
+                    "nap": "Csütörtök",
+                    "kezdes": "12",
+                    "befejezes": "14"
+                },
+                "helyszin": "E3",
+                "oktato": "Dr. Kovács Szilveszter",
+                "szak": "Üzemmérnöki-informatika",
+                "_id": "9",
+                "_tipus": "eloadas"
+            }
+        ]
+    }
+}

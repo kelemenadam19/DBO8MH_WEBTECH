@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JSON Stringify</title>
+</head>
+
+<body>
+    <h2>JavaScript objektum -> JSON string konvertálás</h2>
+
+    <button onclick="convertToJSON()">Konvertálás JSON stringgé</button>
+
+    <br><br>
+    <h3>Eredeti JavaScript objektum:</h3>
+    <textarea id="objectInfo" rows="15" cols="60" readonly></textarea>
+
+    <br><br>
+    <h3>Konvertált JSON string:</h3>
+    <textarea id="jsonOutput" rows="15" cols="60" readonly placeholder="Itt jelenik meg a JSON string..."></textarea>
+
+    <script>
+        const cars = [
+            {
+                id: 1,
+                brand: "Ford",
+                name: "Focus",
+                hp: 125,
+                weight: 1321,
+                date: "2022-05-15",
+                seats: 5,
+                trunkVolume: 375,
+                fuel: "Gasoline",
+                cylinderCapacity: 1596,
+                transmission: "Manual",
+                color: "Magnetic Gray",
+                price: 18500,
+                features: ["Air Conditioning", "Bluetooth", "Parking Sensors"],
+                available: true
+            },
+            {
+                id: 2,
+                brand: "Mazda",
+                name: "6",
+                hp: 194,
+                weight: 1475,
+                date: "2021-11-20",
+                seats: 5,
+                trunkVolume: 483,
+                fuel: "Gasoline",
+                cylinderCapacity: 2488,
+                transmission: "Automatic",
+                color: "Soul Red Crystal",
+                price: 26500,
+                features: ["Leather Seats", "Navigation", "Sunroof"],
+                available: false
+            },
+            {
+                id: 3,
+                brand: "Opel",
+                name: "Astra",
+                hp: 145,
+                weight: 1289,
+                date: "2023-03-10",
+                seats: 5,
+                trunkVolume: 370,
+                fuel: "Diesel",
+                cylinderCapacity: 1598,
+                transmission: "Manual",
+                color: "Summit White",
+                price: 21900,
+                features: ["Cruise Control", "LED Lights"],
+                available: true
+            }
+        ];
+
+        function displayObjectInfo() {
+            const objectInfo = document.getElementById('objectInfo');
+            let info = 'JavaScript objektum (tömb):\n\n';
+
+            cars.forEach((car, index) => {
+                info += `Autó ${index + 1}:\n`;
+                info += `  Típus: ${typeof car}\n`;
+                info += `  Brand: ${car.brand} (${typeof car.brand})\n`;
+                info += `  Name: ${car.name} (${typeof car.name})\n`;
+                info += `  HP: ${car.hp} (${typeof car.hp})\n`;
+                info += `  Price: ${car.price} (${typeof car.price})\n`;
+                info += `  Available: ${car.available} (${typeof car.available})\n`;
+                info += `  Features: [${car.features.join(', ')}] (${typeof car.features})\n`;
+                info += '\n' + '='.repeat(50) + '\n\n';
+            });
+
+            objectInfo.value = info;
+        }
+
+        function convertToJSON() {
+            const jsonOutput = document.getElementById('jsonOutput');
+
+            try {
+                const jsonString = JSON.stringify(cars);
+                jsonOutput.value = jsonString;
+
+            } catch (error) {
+                jsonOutput.value = 'Hiba: ' + error.message;
+            }
+        }
+
+        function convertWithFormatting() {
+            const jsonOutput = document.getElementById('jsonOutput');
+
+            try {
+                const prettyJSON = JSON.stringify(cars, null, 2);
+                jsonOutput.value = prettyJSON;
+
+            } catch (error) {
+                jsonOutput.value = 'Hiba: ' + error.message;
+            }
+        }
+
+        function convertWithReplacer() {
+            const jsonOutput = document.getElementById('jsonOutput');
+
+            try {
+                const replacer = (key, value) => {
+                    const allowedKeys = ['brand', 'name', 'hp', 'price', 'color'];
+                    if (allowedKeys.includes(key) || key === '') {
+                        return value;
+                    }
+                    return undefined;
+                };
+
+                const filteredJSON = JSON.stringify(cars, replacer, 2);
+                jsonOutput.value = "// Csak brand, name, hp, price, color mezők:\n" + filteredJSON;
+
+            } catch (error) {
+                jsonOutput.value = 'Hiba: ' + error.message;
+            }
+        }
+
+        displayObjectInfo();
+
+    </script>
+</body>
+
+</html>

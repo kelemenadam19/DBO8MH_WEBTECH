@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Text konvertálása JavaScript objektummá</title>
+</head>
+
+<body>
+    <h1>JSON Text konvertálása JavaScript objektummá</h1>
+    <br>
+    <div id="kiir"></div>
+    <script>
+        let DBO8MH = '{"nev": "Kelemen Ádám", "irsz": "3534", "varos": "Miskolc","egyetem": "Miskolci Egyetem"}';
+        let obj = JSON.parse(DBO8MH);
+
+        document.getElementById("kiir").innerHTML = `Név: ${obj.nev};   Irányatószám: ${obj.irsz};  Város: ${obj.varos};    Egyetem: ${obj.egyetem}`;
+
+    </script>
+</body>
+
+</html>

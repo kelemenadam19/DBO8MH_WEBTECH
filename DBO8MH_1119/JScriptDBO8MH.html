@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Órarend</title>
+    <style>
+        table,
+        th,
+        tr,
+        td {
+            border: solid 1px black
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Órarend</h1>
+
+    <div id="loading">Órarend betöltése...</div>
+
+    <table id="orarend-table" style="display:none;">
+        <thead>
+            <tr>
+                <th>Tárgy</th>
+                <th>Nap</th>
+                <th>Kezdés</th>
+                <th>Befejezés</th>
+                <th>Helyszín</th>
+                <th>Oktató</th>
+                <th>Típus</th>
+            </tr>
+        </thead>
+        <tbody id="orarend-body">
+        </tbody>
+    </table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const orarendBody = document.getElementById('orarend-body');
+            const loadingElement = document.getElementById('loading');
+            const tableElement = document.getElementById('orarend-table');
+
+            fetch('orarend.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('error');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    loadingElement.style.display = 'none';
+                    tableElement.style.display = 'table';
+                    renderOrarend(data.orarend.ora);
+                })
+                .catch(error => {
+                    loadingElement.innerHTML = `<p style="color: red;">Hiba: ${error.message}</p>`;
+                    console.error('error:', error);
+                });
+
+            function renderOrarend(oraLista) {
+                let html = '';
+
+                oraLista.forEach(ora => {
+                    html += `
+                        <tr>
+                            <td>${ora.targy}</td>
+                            <td>${ora.idopont.nap}</td>
+                            <td>${ora.idopont.kezdes}:00</td>
+                            <td>${ora.idopont.befejezes}:00</td>
+                            <td>${ora.helyszin}</td>
+                            <td>${ora.oktato}</td>
+                            <td>${ora._tipus}</td>
+                        </tr>
+                    `;
+                });
+
+                orarendBody.innerHTML = html;
+            }
+        });
+    </script>
+</body>
+
+</html>
