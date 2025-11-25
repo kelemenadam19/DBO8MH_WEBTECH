@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kapcsolat - Autó Kereskedés</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/forms.css">
+    <link rel="stylesheet" href="styles/contacts.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="fas fa-car"></i> AutóKereskedés
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Főoldal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cars.html">Autólista</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="add-car.html">Autó hozzáadása</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="gallery.html">Galéria</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="contact.html">Kapcsolat</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-5 pt-4">
+        <section class="mb-4">
+            <h1 class="text-center mb-3">Kapcsolat</h1>
+            <h3 class="text-center">Vegye fel velünk a kapcsolatot bátran</h3>
+        </section>
+
+        <section class="contact-info text-center mb-5">
+            <div class="row">
+                <div class="col-md-4">
+                    <i class="fas fa-map-marker-alt fa-2x mb-3"></i>
+                    <h4>Cím</h4>
+                    <p>3515 Miskolc<br>Egyetem út 1.</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-phone fa-2x mb-3"></i>
+                    <h4>Telefon</h4>
+                    <p>+36 1 234 5678<br>+36 1 234 5679</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="fas fa-envelope fa-2x mb-3"></i>
+                    <h4>Email</h4>
+                    <p>info.nekuldjsemmit@hamisautokereskedes.hu<br>ugyfelszolgalat.idesekuldj@hamisautokereskedes.hu</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="row">
+            <div class="col-md-8">
+                <article class="form-section">
+                    <h3 class="mb-4">Küldjön üzenetet</h3>
+                    <form id="contactForm" novalidate>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="firstName" class="form-label">Keresztnév *</label>
+                                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="lastName" class="form-label">Vezetéknév *</label>
+                                    <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email cím *</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Telefonszám</label>
+                            <input type="tel" class="form-control" id="phone" name="phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Tárgy *</label>
+                            <select class="form-select" id="subject" name="subject" required>
+                                <option value="">Válasszon tárgyat...</option>
+                                <option value="info">Általános információ</option>
+                                <option value="test_drive">Hamis hírdetés</option>
+                                <option value="service">Probléma az oldalon</option>
+                                <option value="complaint">Unatkozik</option>
+                                <option value="other">Egyéb</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="carModel" class="form-label">Milyen autóval kapcsolatos?<p class="text-muted">Ha autó érintett</p></label>
+                            <input class="form-control" id="carModel" name="carModel" 
+                                   placeholder="Írd be az autó nevét!">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="urgency" class="form-label">Sürgősség</label>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-check custom-radio">
+                                        <input class="form-check-input" type="radio" name="urgency" id="low" value="low" checked>
+                                        <label class="form-check-label" for="low">Alacsony</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check custom-radio">
+                                        <input class="form-check-input" type="radio" name="urgency" id="medium" value="medium">
+                                        <label class="form-check-label" for="medium">Közepes</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check custom-radio">
+                                        <input class="form-check-input" type="radio" name="urgency" id="high" value="high">
+                                        <label class="form-check-label" for="high">Magas</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactMethod" class="form-label">Preferált kapcsolatfelvétel</label>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-check custom-checkbox">
+                                        <input class="form-check-input" type="checkbox" id="contactEmail" name="contactMethod[]" value="email" checked>
+                                        <label class="form-check-label" for="contactEmail">Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check custom-checkbox">
+                                        <input class="form-check-input" type="checkbox" id="contactPhone" name="contactMethod[]" value="phone">
+                                        <label class="form-check-label" for="contactPhone">Telefon</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check custom-checkbox">
+                                        <input class="form-check-input" type="checkbox" id="contactSMS" name="contactMethod[]" value="sms">
+                                        <label class="form-check-label" for="contactSMS">SMS</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="form-label">Üzenet *</label>
+                            <textarea class="form-control" id="message" name="message" rows="6" required
+                                      placeholder="Írja le üzenetét..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
+                                <label class="form-check-label" for="newsletter">
+                                    Szeretnék feliratkozni a hírlevélre
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-paper-plane"></i> Üzenet Küldése
+                            </button>
+                            <button type="reset" class="btn btn-outline-secondary btn-lg ms-2">
+                                <i class="fas fa-undo"></i> Alaphelyzet
+                            </button>
+                        </div>
+                    </form>
+                </article>
+            </div>
+
+            <div class="col-md-4">
+                <aside>
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="fas fa-clock"></i> Nyitvatartás</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">
+                                    <strong>Hétfő-Péntek:</strong><br>
+                                    9:00 - 18:00
+                                </li>
+                                <li class="mb-2">
+                                    <strong>Szombat:</strong><br>
+                                    9:00 - 14:00
+                                </li>
+                                <li>
+                                    <strong>Vasárnap:</strong><br>
+                                    Zárva
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="mb-0"><i class="fas fa-map"></i> Tartózkodási helyünk</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="map-container">
+                                <div style="width:100%;height:300px;background:#e9ecef;display:flex;align-items:center;justify-content:center;">
+                                    <iframe 
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2665.4930478456176!2d20.761563976989663!3d48.081427471237326!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47409f84ee990555%3A0x5f1a1e1d57dd9208!2sMiskolci%20Egyetem!5e0!3m2!1shu!2shu!4v1763992936526!5m2!1shu!2shu" 
+                                        width="100%" 
+                                        height="300" 
+                                        style="border:0;" 
+                                        allowfullscreen="" 
+                                        loading="lazy" 
+                                        referrerpolicy="no-referrer-when-downgrade">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+
+        <section class="mt-5">
+            <h3 class="mb-4">Gyakran Ismételt Kérdések</h3>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                            Milyen fizetési lehetőségek állnak rendelkezésre?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Az eladóval kapcsolatosan kell egyeztetni
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                            Hol tudom átvenni?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                           Személyesen a kereskedésben van lehetősége, ha nem egyeztetett a tulajdonossal
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                            Van-e garancia a vásárolt autókra?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            A kereskedés nem vállal garanciát a meghírdetett autókra, bármilyen fenálló hibával kapcsolatosan jelezzen a kapcsolat fülön
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Elérhetőség</h5>
+                    <p><i class="fas fa-map-marker-alt"></i> Miskolc, Egyetem út 1, 3515</p>
+                    <p><i class="fas fa-phone"></i> +36 1 234 5678</p>
+                    <p><i class="fas fa-envelope"></i> info.nekuldjsemmit@hamisautokereskedes.hu</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Nyitvatartás</h5>
+                    <p>Hétfő-Péntek: 9:00 - 18:00</p>
+                    <p>Szombat: 9:00 - 14:00</p>
+                    <p>Vasárnap: Zárva</p>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2025 AutóKereskedés. Minden jog fenntartva.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/form-validation.js"></script>
+  <script>
+    $(document).ready(function() {
+        const validator = new FormValidator('contactForm');
+        
+        $('#contactForm').on('submit', function(e) {
+            if (validator.validateForm(e)) {
+                e.preventDefault();
+                
+                const formData = {
+                    firstName: $('#firstName').val(),
+                    lastName: $('#lastName').val(),
+                    email: $('#email').val(),
+                    phone: $('#phone').val(),
+                    subject: $('#subject').val(),
+                    carModel: $('#carModel').val(),
+                    urgency: $('input[name="urgency"]:checked').val(),
+                    contactMethod: $('input[name="contactMethod[]"]:checked').map(function() {
+                        return this.value;
+                    }).get(),
+                    message: $('#message').val(),
+                    newsletter: $('#newsletter').is(':checked'),
+                    timestamp: new Date().toISOString()
+                };
+
+                const submitBtn = $(this).find('button[type="submit"]');
+                const originalText = submitBtn.html();
+                
+                submitBtn.html('<i class="fas fa-spinner fa-spin"></i> Küldés...')
+                         .prop('disabled', true);
+
+
+                const downloadSuccess = generateAndDownloadReport(formData);
+
+                setTimeout(() => {
+
+                    $('.form-section').animate({backgroundColor: '#d4edda'}, 300)
+                                     .animate({backgroundColor: '#ffffff'}, 1000);
+                    
+                    if (downloadSuccess) {
+                        showSuccessMessage();
+                    } else {
+                        showDownloadHelpMessage();
+                    }
+                    
+                    submitBtn.html(originalText).prop('disabled', false);
+                    e.target.reset();
+
+                }, 1500);
+            }
+        });
+
+
+        function generateAndDownloadReport(formData) {
+            try {
+                const now = new Date();
+                const dateString = now.toISOString().slice(0,10).replace(/-/g, '');
+                const timeString = now.toTimeString().slice(0,8).replace(/:/g, '');
+                const filename = `report_${dateString}_${timeString}.txt`;
+
+                const subjectTexts = {
+                    'info': 'Általános információ',
+                    'test_drive': 'Hamis hírdetés',
+                    'service': 'Probléma az oldalon',
+                    'complaint': 'Unatkozik',
+                    'other': 'Egyéb'
+                };
+
+                const urgencyTexts = {
+                    'low': 'Alacsony',
+                    'medium': 'Közepes',
+                    'high': 'Magas'
+                };
+
+                const contactMethodTexts = {
+                    'email': 'Email',
+                    'phone': 'Telefon',
+                    'sms': 'SMS'
+                };
+
+                const emailContent = `
+*----------------------------------------------------------------------*
+                          AUTÓKERESKEDÉS - KAPCSOLATFELVÉTEL
+*----------------------------------------------------------------------*
+
+Feladó: ${formData.firstName} ${formData.lastName}
+Email: ${formData.email}
+Telefon: ${formData.phone || 'Nem megadva'}
+
+Tárgy: ${subjectTexts[formData.subject] || formData.subject}
+Autómodell: ${formData.carModel || 'Nem megadva'}
+Sürgősség: ${urgencyTexts[formData.urgency]}
+
+Preferált kapcsolatfelvétel: ${formData.contactMethod.map(method => contactMethodTexts[method]).join(', ')}
+
+ÜZENET:
+${formData.message}
+
+${formData.newsletter ? '✓ Feliratkozott a hírlevélre' : '✗ Nem iratkozott fel a hírlevélre'}
+
+Időbélyeg: ${new Date(formData.timestamp).toLocaleString('hu-HU')}
+*----------------------------------------------------------------------*
+                `.trim();
+
+                const jsonContent = JSON.stringify({
+                    contactRequest: {
+                        personalInfo: {
+                            firstName: formData.firstName,
+                            lastName: formData.lastName,
+                            email: formData.email,
+                            phone: formData.phone
+                        },
+                        requestDetails: {
+                            subject: formData.subject,
+                            subjectText: subjectTexts[formData.subject],
+                            carModel: formData.carModel,
+                            urgency: formData.urgency,
+                            urgencyText: urgencyTexts[formData.urgency],
+                            contactMethods: formData.contactMethod.map(method => ({
+                                method: method,
+                                methodText: contactMethodTexts[method]
+                            })),
+                            message: formData.message,
+                            newsletter: formData.newsletter
+                        },
+                        metadata: {
+                            timestamp: formData.timestamp,
+                            formattedTimestamp: new Date(formData.timestamp).toLocaleString('hu-HU')
+                        }
+                    }
+                }, null, 2);
+
+                function escapeXml(unsafe) {
+                    if (!unsafe) return '';
+                    return unsafe.replace(/[<>&'"]/g, function (c) {
+                        switch (c) {
+                            case '<': return '&lt;';
+                            case '>': return '&gt;';
+                            case '&': return '&amp;';
+                            case '\'': return '&apos;';
+                            case '"': return '&quot;';
+                        }
+                    });
+                }
+
+                const xmlContent = `<?xml version="1.0" encoding="UTF-8"?>
+<contactRequest>
+    <personalInfo>
+        <firstName>${escapeXml(formData.firstName)}</firstName>
+        <lastName>${escapeXml(formData.lastName)}</lastName>
+        <email>${escapeXml(formData.email)}</email>
+        <phone>${escapeXml(formData.phone || '')}</phone>
+    </personalInfo>
+    <requestDetails>
+        <subject code="${formData.subject}">${escapeXml(subjectTexts[formData.subject])}</subject>
+        <carModel>${escapeXml(formData.carModel || '')}</carModel>
+        <urgency level="${formData.urgency}">${escapeXml(urgencyTexts[formData.urgency])}</urgency>
+        <contactMethods>
+            ${formData.contactMethod.map(method => `
+            <method type="${method}">${escapeXml(contactMethodTexts[method])}</method>
+            `).join('')}
+        </contactMethods>
+        <message>${escapeXml(formData.message)}</message>
+        <newsletter>${formData.newsletter}</newsletter>
+    </requestDetails>
+    <metadata>
+        <timestamp>${formData.timestamp}</timestamp>
+        <formattedTimestamp>${new Date(formData.timestamp).toLocaleString('hu-HU')}</formattedTimestamp>
+    </metadata>
+</contactRequest>`.trim();
+
+                const fullContent = `
+${emailContent}
+
+*----------------------------------------------------------------------*
+                                 JSON ADATOK
+*----------------------------------------------------------------------*
+
+${jsonContent}
+
+*----------------------------------------------------------------------*
+                                 XML ADATOK
+*----------------------------------------------------------------------*
+
+${xmlContent}
+                `.trim();
+
+                const blob = new Blob([fullContent], { type: 'text/plain;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+
+                let downloadSuccess = false;
+
+                try {
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = filename;
+                    link.style.display = 'none';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    downloadSuccess = true;
+                } catch (error) {
+                    console.error("Letöltés sikertelen:", error);
+                }
+
+                setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+                return downloadSuccess;
+                
+            } catch (error) {
+                console.error('Hiba a fájl generálása során:', error);
+                return false;
+            }
+        }
+
+        function showSuccessMessage() {
+            const successHtml = `
+                <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-check-circle fa-2x me-3"></i>
+                        <div>
+                            <h5 class="alert-heading mb-1">Sikeres elküldés!</h5>
+                            <p class="mb-0">A report fájl letöltése megkezdődött.</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+            
+            $('#contactForm').before(successHtml);
+            
+            setTimeout(() => {
+                $('.alert-success').alert('close');
+            }, 5000);
+        }
+
+        function showDownloadHelpMessage() {
+            const helpHtml = `
+                <div class="alert alert-warning alert-dismissible fade show mt-3" role="alert">
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-exclamation-triangle fa-2x me-3"></i>
+                        <div>
+                            <h5 class="alert-heading mb-1">Sikeres elküldés!</h5>
+                            <p class="mb-0">A böngésző blokkolta a letöltést. Engedélyezze a felugró ablakokat.</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+            
+            $('#contactForm').before(helpHtml);
+            
+            setTimeout(() => {
+                $('.alert-warning').alert('close');
+            }, 8000);
+        }
+
+        $('.accordion-button').click(function() {
+            $(this).find('i').toggleClass('fa-plus fa-minus');
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meghirdetet autók - Autó Kereskedés</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/forms.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="fas fa-car"></i> AutóKereskedés
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Főoldal</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="cars.html">Autólista</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="add-car.html">Autó hozzáadása</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="gallery.html">Galéria</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Kapcsolat</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-5 pt-4">
+        <section class="mb-4">
+            <h1 class="text-center mb-3">Autóink</h1>
+            <p class="text-center text-muted">Fedezze fel exkluzív autóink gyűjteményét</p>
+        </section>
+
+        <aside class="bg-light p-4 rounded mb-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        <input type="text" id="searchInput" class="form-control" placeholder="Keresés márka vagy modell alapján...">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <select id="sortSelect" class="form-select">
+                        <option value="">Rendezés...</option>
+                        <option value="name_asc">Név A-Z</option>
+                        <option value="price_asc">Ár növekvő</option>
+                        <option value="price_desc">Ár csökkenő</option>
+                        <option value="year_desc">Legújabb elől</option>
+                    </select>
+                </div>
+
+            </div>
+        </aside>
+        <section>
+            <div id="carList" class="row">
+            </div>
+        </section>
+
+        <section class="mt-5">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card text-white bg-primary">
+                        <div class="card-body text-center">
+                            <h3 id="totalCars">0</h3>
+                            <p>Összes autó</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-white bg-success">
+                        <div class="card-body text-center">
+                            <h3 id="avgPrice">0</h3>
+                            <p>Átlagár (Ft)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-white bg-warning">
+                        <div class="card-body text-center">
+                            <h3 id="avgHorsepower">0</h3>
+                            <p>Átlag lóerő</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card text-white bg-info">
+                        <div class="card-body text-center">
+                            <h3 id="newestYear">0</h3>
+                            <p>Legújabb évjárat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+     <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Elérhetőség</h5>
+                    <p><i class="fas fa-map-marker-alt"></i> Miskolc, Egyetem út 1, 3515</p>
+                    <p><i class="fas fa-phone"></i> +36 1 234 5678</p>
+                    <p><i class="fas fa-envelope"></i> info.nekuldjsemmit@hamisautokereskedes.hu</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>Nyitvatartás</h5>
+                    <p>Hétfő-Péntek: 9:00 - 18:00</p>
+                    <p>Szombat: 9:00 - 14:00</p>
+                    <p>Vasárnap: Zárva</p>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2025 AutóKereskedés. Minden jog fenntartva.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/car-manager.js"></script>
+    <script>
+        $(document).ready(function() {
+            const carManager = new CarManager();
+
+            $('#jsonBtn').click(function() {
+                $('#jsonData').slideToggle(300);
+                JSONManager.displayJSONData('jsonContent');
+
+                $(this).toggleClass('btn-primary btn-outline-primary');
+            });
+
+            function updateStatistics(cars) {
+                $('#totalCars').text(cars.length);
+                
+                const prices = cars.filter(car => car.price).map(car => car.price);
+                const avgPrice = prices.length ? (prices.reduce((a, b) => a + b, 0) / prices.length).toFixed(0) : 0;
+                $('#avgPrice').text(avgPrice.toLocaleString());
+                
+                const horsepowers = cars.filter(car => car.horsepower).map(car => car.horsepower);
+                const avgHorsepower = horsepowers.length ? (horsepowers.reduce((a, b) => a + b, 0) / horsepowers.length).toFixed(0) : 0;
+                $('#avgHorsepower').text(avgHorsepower);
+                
+                const years = cars.filter(car => car.manufacture_year).map(car => car.manufacture_year);
+                const newestYear = years.length ? Math.max(...years) : 0;
+                $('#newestYear').text(newestYear);
+            }
+
+            setTimeout(() => {
+                updateStatistics(carManager.cars);
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
